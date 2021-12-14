@@ -49,6 +49,12 @@ string Scaner::get_lex()
 		c2 = in_main.get();//Получение символа char
 	if ((c1 >= '0') && (c1 <= '9'))
 		state = CONSTANT;
+	int flag = 0;
+	if ((c1 == '\'') && (c1 <= '"'))
+	{
+		state = CONSTANT;
+		flag = 1;
+	}
 	while ((!in_main.eof()) || (c1 > 0))
 	{
 		//Начало коментария, если встречен с1 =/ с2 =/ Или с1 =/ с2 = *
@@ -80,7 +86,11 @@ string Scaner::get_lex()
 		t_str = c1;
 		if (state == CONSTANT)
 		{
-			if ((c1 < '0') && (c1 > '9'))
+			if (flag == 1)
+			{
+
+			}
+			else if ((c1 < '0') && (c1 > '9'))
 			{
 				//error
 				t_str = "";
@@ -104,25 +114,25 @@ string Scaner::get_lex()
 		bufer += c1;
 		t_str = c2;
 		//Если с1 разделитель или с2 разделитель или пробел или табуляция или перенос строки получить лексему
-			if (table_of_dividers == bufer)//
+		if (table_of_dividers == bufer)//
+		{
+			keeper_last_char = c2;
+			//Разделитель
+			Token A(bufer, DIVIDER);
+			fout << "{3,";
+			ifstream file("dividers.txt", ios::in);
+			vector <string> temp(21);
+			short i = 0;
+			while (!file.eof())
 			{
-				keeper_last_char = c2;
-				//Разделитель
-				Token A(bufer, DIVIDER);
-				fout << "{3,";
-				ifstream file("dividers.txt", ios::in);
-				vector <string> temp(21);
-				short i = 0;
-				while (!file.eof())
-				{
-					file >> temp[i];
-					if (temp[i] == bufer) fout << i + 1 << "," << strok << "} ";
-					i++;
-				}
-				file.close();
-				stream_of_token += A;
-				return bufer;
+				file >> temp[i];
+				if (temp[i] == bufer) fout << i + 1 << "," << strok << "} ";
+				i++;
 			}
+			file.close();
+			stream_of_token += A;
+			return bufer;
+		}
 		if ((table_of_dividers == t_str) || (c2 == ' ') || (c2 == '\t') || (c2 == '\n'))
 		{
 			keeper_last_char = c2;

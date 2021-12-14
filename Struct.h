@@ -9,6 +9,18 @@ enum {
 	KEYWORD, DIVIDER, IDENTIFIER, CONSTANT, END_OF_PROGRAMM, ERROR,
 	BEGIN_STATE
 };
+class obrPolsk
+{
+public:
+	obrPolsk();
+	~obrPolsk();
+	string name;
+	string type;
+	obrPolsk& operator= (const obrPolsk &copy);
+	obrPolsk(const obrPolsk& obg);
+private:
+
+};
 class Token
 {
 	

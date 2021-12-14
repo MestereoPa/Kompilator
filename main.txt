@@ -2,10 +2,10 @@ PROGRAMM; //some text
 integer x; 
 integer z;
 string y; //some text
-y = ”www”;
+y = "www";
 for (x = 5:10 by 1)
 z = 5+length(y) - x;
-write(’zsdadw’,z ); 
+write('zsdadw',z );
 endfor;
 FUNC length(integer s); 
 return 3;

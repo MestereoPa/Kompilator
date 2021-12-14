@@ -151,12 +151,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="interpritator.h" />
     <ClInclude Include="Scaner.h" />
     <ClInclude Include="sintAnalays.h" />
     <ClInclude Include="Struct.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Compilators.cpp" />
+    <ClCompile Include="interpritator.cpp" />
     <ClCompile Include="Scaner.cpp" />
     <ClCompile Include="sintAnalays.cpp" />
     <ClCompile Include="Struct.cpp" />

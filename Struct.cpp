@@ -78,3 +78,22 @@ Token::Token(const Token& obg)
 	name = obg.name;
 	type = obg.type;
 }
+obrPolsk::obrPolsk()
+{
+	name = "";
+	type = "";
+}
+obrPolsk::obrPolsk(const obrPolsk& obg)
+{
+	name = obg.name;
+	type = obg.type;
+}
+obrPolsk::~obrPolsk()
+{
+}
+obrPolsk& obrPolsk::operator= (const obrPolsk &copy)
+{
+	name = copy.name;
+	type = copy.type;
+	return *this;
+}
