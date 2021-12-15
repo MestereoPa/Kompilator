@@ -1,5 +1,5 @@
-#include "interpritator.h"
-interpritator::interpritator(vector<obrPolsk> exit)
+#include "translator.h"
+translator::translator(vector<obrPolsk> exit)
 {
 	input = exit;
 	forLink = 0;
@@ -13,16 +13,16 @@ interpritator::interpritator(vector<obrPolsk> exit)
 	newElem.type = "CONSTANT";
 	data.push_back(newElem);
 }
-interpritator::interpritator()
+translator::translator()
 {
 	forLink = 0;
 }
-void interpritator::getNewElem()
+void translator::getNewElem()
 {
 	newElem = input.at(numberOperation);
 	numberOperation++;
 }
-int interpritator::interpritation()
+int translator::translation()
 {
 	while (numberOperation < input.size())
 	{
@@ -46,7 +46,7 @@ int interpritator::interpritation()
 	}
 	return 1;
 }
-int interpritator::doOperation()
+int translator::doOperation()
 {
 	if (newElem.name == "=")
 	{
@@ -112,7 +112,7 @@ int interpritator::doOperation()
 	}
 	return 0;
 }
-int interpritator::MOV()
+int translator::MOV()
 {
 	obrPolsk newElem1;
 	newElem1.type = "OPERATION";
@@ -120,7 +120,7 @@ int interpritator::MOV()
 	code.push_back(newElem1);
 	return 1;
 }
-int interpritator::ADD()
+int translator::ADD()
 {
 	obrPolsk Right, Left, copyElem;
 	int flag = 0;
@@ -199,7 +199,7 @@ int interpritator::ADD()
 
 	return 1;
 }
-int interpritator::SUB()
+int translator::SUB()
 {
 	obrPolsk Right, Left, copyElem;
 	int flag = 0;
@@ -276,7 +276,7 @@ int interpritator::SUB()
 
 	return 1;
 }
-int interpritator::JL()
+int translator::JL()
 {
 	obrPolsk Right, Left;
 	int flag = 0;
@@ -319,7 +319,7 @@ int interpritator::JL()
 	newElem.name = "jl";
 	return 1;
 }
-int interpritator::JG()
+int translator::JG()
 {
 
 	obrPolsk Right, Left;
@@ -364,7 +364,7 @@ int interpritator::JG()
 	code.push_back(newElem);
 	return 1;
 }
-int interpritator::DD()
+int translator::DD()
 {
 	data.push_back(STACK.top());
 	STACK.pop();
@@ -374,7 +374,7 @@ int interpritator::DD()
 	data.push_back(newElem);
 	return 1;
 }
-int interpritator::DB()
+int translator::DB()
 {
 	data.push_back(STACK.top());
 	STACK.pop();
@@ -384,7 +384,7 @@ int interpritator::DB()
 	data.push_back(newElem);
 	return 1;
 }
-int interpritator::doLink()
+int translator::doLink()
 {
 	if (newElem.type == "LINK")
 	{
@@ -428,7 +428,7 @@ int interpritator::doLink()
 	}
 	return 1;
 }
-int interpritator::doFunc()
+int translator::doFunc()
 {
 	obrPolsk funcElem, funcName = newElem;
 	int Numb;
@@ -465,7 +465,7 @@ int interpritator::doFunc()
 	numberOperation = Numb ;
 	return 1;
 }
-int interpritator::doWrite()
+int translator::doWrite()
 {
 	obrPolsk Right;
 	int colvo = numberOperation - numbWrit - 1;
@@ -509,7 +509,7 @@ int interpritator::doWrite()
 	}
 	return 1;
 }
-int interpritator::putInFile()
+int translator::putInFile()
 {
 	ofstream fout;
 	fout.open("Assembler.txt");

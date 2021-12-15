@@ -27,7 +27,7 @@
     <ClCompile Include="sintAnalays.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="interpritator.cpp">
+    <ClCompile Include="translator.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="sintAnalays.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="interpritator.h">
+    <ClInclude Include="translator.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

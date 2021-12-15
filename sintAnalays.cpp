@@ -1,16 +1,15 @@
 #include "sintAnalays.h"
-
-
+// синт анализатор получает на вход из лексического ана-ра таблицу лексем
 sintAnalays::sintAnalays( Table <Token> stream_of_token, vector <Ident> table_of_identifier)
 {
 	this->stream_of_token = stream_of_token;
 	this->table_of_identifier = table_of_identifier;
-	tokNumber =0;
+	tokNumber = 0;
 	lineNumber = 0;
 }
-void sintAnalays::newToken()
+void sintAnalays::newToken() 
 {
-	tokenName = stream_of_token.table.at(tokNumber).get_name();
+	tokenName = stream_of_token.table.at(tokNumber).get_name(); 
 	tokenType = stream_of_token.table.at(tokNumber).get_type();
 	tokNumber++;
 }

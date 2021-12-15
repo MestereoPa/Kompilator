@@ -1,4 +1,4 @@
-#include "interpritator.h"
+#include "translator.h"
 #include <locale>
 int main()
 {
@@ -10,8 +10,8 @@ int main()
 	 
 	B.analys();
 	B.getExit();
-	interpritator C(B.exit);
-	C.interpritation();
+	translator C(B.exit);
+	C.translation();
 	C.putInFile();
 	system("pause");
 	return 0;
